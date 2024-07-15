@@ -3,15 +3,8 @@ import { NextResponse } from "next/server";
 
 export async function GET(req, res) {
     try {
-        let { searchParams } = new URL(req.url);
-        let id = parseInt(searchParams.get('id'));
-
         const prisma = new PrismaClient();
-        const result = await prisma.products.findMany({
-            where: {
-                brand_id: id
-            }
-        })
+        const result = await prisma.categories.findMany();
 
         return NextResponse.json({ status: 'success', data: result })
     } catch (error) {
