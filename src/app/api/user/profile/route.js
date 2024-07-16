@@ -7,7 +7,7 @@ export async function POST(req, res) {
         let headerList = headers();
         let id = parseInt(headerList.get('id'));
         let reqBody = await req.json();
-console.log(reqBody)
+
         const prisma = new PrismaClient();
         const result = await prisma.customer_profiles.upsert({
             where: { user_id: id },
