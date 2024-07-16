@@ -24,11 +24,11 @@ export async function middleware(req, res) {
     }
 }
 
-export const config = [
+export const config = {
     matcher: [
         '/api/cart/:path*',
         '/api/invoice/:path*',
         '/api/user/:path*',
         '/api/wish/:path*',
     ]
-]
+}
