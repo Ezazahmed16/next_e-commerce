@@ -104,13 +104,10 @@ export async function GET(req, res) {
         form.append('currency', PaymentSettings['currency'])
         form.append('tran_id', tran_id)
 
-
         form.append('success_url', `${PaymentSettings['success_url']}?tran_id=${tran_id}`)
         form.append('fail_url', `${PaymentSettings['fail_url']}?tran_id=${tran_id}`)
         form.append('cancel_url', `${PaymentSettings['cancel_url']}?tran_id=${tran_id}`)
         form.append('ipn_url', `${PaymentSettings['ipn_url']}?tran_id=${tran_id}`)
-
-
 
         form.append('cus_name', Profile['cus_name'])
         form.append('cus_email', cus_email)
