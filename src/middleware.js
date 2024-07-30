@@ -29,6 +29,7 @@ export const config = {
         '/api/cart/:path*',
         '/api/invoice/:path*',
         '/api/user/:path*',
+        '/api/user/review/:path*',
         '/api/wish/:path*',
     ]
 }
