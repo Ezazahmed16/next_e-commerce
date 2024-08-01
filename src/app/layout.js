@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html data-theme="retro" lang="en">
+    <html data-theme="light" lang="en">
       <body className={inter.className}>
         {children}
         <NextTopLoader
