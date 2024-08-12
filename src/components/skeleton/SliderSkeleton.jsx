@@ -10,7 +10,7 @@ const SliderSkeleton = () => {
             <div className="">
                 <SkeletonTheme baseColor="#00BBA6" highlightColor="#242C36">
                     <p className=''>
-                        <Skeleton count={4} />
+                        <Skeleton count={6} />
                     </p>
                 </SkeletonTheme>
             </div>
