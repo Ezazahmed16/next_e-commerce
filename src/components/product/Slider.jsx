@@ -6,7 +6,6 @@ import Link from "next/link";
 
 const Slider = () => {
     const { data, isLoading } = useSWR('/api/product/slider-list', Fetcher);
-    console.log(data);
 
     if (isLoading) return <SliderSkeleton />;
 
