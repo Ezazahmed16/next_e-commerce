@@ -21,7 +21,7 @@ const Slider = () => {
                         return (
                             <div id={`slide${i}`} key={item.id} className="carousel-item relative w-full max-h-screen">
 
-                                <div className="bg-slate-900 grid grid-cols-2 gap-10 justify-center items-center">
+                                <div className="bg-slate-900 grid grid-cols-2 gap-10 justify-center items-center min-w-full text-white">
                                     <div className="mx-auto">
                                         <h1 className="text-3xl font-bold pb-2">{item['title']}</h1>
                                         <p className="text-xl pb-3">{item['short_des']}</p>
@@ -30,7 +30,7 @@ const Slider = () => {
                                             <button className="btn btn-accent">Buy Now</button>
                                         </Link>
                                     </div>
-                                    <div className="">
+                                    <div className="w-full">
                                         <img
                                             src={item.image}
                                             className="w-full" />
