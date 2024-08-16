@@ -26,7 +26,7 @@ const AppNavbar = () => {
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                             <ul className="menu menu-horizontal px-1">
-                                <li><Link href='/home'>
+                                <li><Link href='/'>
                                     <House className='w-6 h-6' />
                                     Home
                                 </Link></li>
@@ -50,7 +50,7 @@ const AppNavbar = () => {
 
                     <div className="hidden lg:flex">
                         <ul className="menu menu-horizontal px-1 pl-5">
-                            <li><Link href='/home'>
+                            <li><Link href='/'>
                                 <House className='w-6 h-6' />
                                 Home
                             </Link></li>
