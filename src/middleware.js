@@ -1,35 +1,39 @@
 import { NextResponse } from "next/server";
 import { VerifyToken } from "./utility/JWTTokenHelper";
 
-export async function middleware(req, res) {
+export async function middleware(req) {
     try {
-        let token = req.cookies.get('token');
-        let payload = await VerifyToken(token['value']);
+        const token = req.cookies.get('token');
+        if (!token) {
+            throw new Error('Token not found');
+        }
 
-        const requestHeader = new Headers(req.headers);
-        requestHeader.set('email', payload['email']);
-        requestHeader.set('id', payload['id']);
+        const payload = await VerifyToken(token);
+
+        const requestHeaders = new Headers(req.headers);
+        requestHeaders.set('email', payload.email);
+        requestHeaders.set('id', payload.id);
 
         return NextResponse.next({
             request: {
-                headers: requestHeader
+                headers: requestHeaders
             }
         });
-    } catch (e) {
-        if (req.url.startWith('/api/')) {
-            return NextResponse.json({ status: 'fail', data: 'unauthorized' }, { status: 401 })
+    } catch (error) {
+        if (req.url.startsWith('/api/')) {
+            return NextResponse.json({ status: 'fail', data: 'unauthorized' }, { status: 401 });
         } else {
-            res.redirect('/login')
+            return NextResponse.redirect(new URL('/login', req.url));
         }
     }
 }
 
 export const config = {
     matcher: [
-        '/api/cart/:path*',
-        '/api/invoice/:path*',
-        '/api/user/:path*',
-        '/api/user/review/:path*',
-        '/api/wish/:path*',
+        // '/api/cart/:path*',
+        // '/api/invoice/:path*',
+        // '/api/user/:path*',
+        // '/api/user/review/:path*',
+        // '/api/wish/:path*',
     ]
-}
+};

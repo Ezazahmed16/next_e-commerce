@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import { Heart, House, Search, ShoppingCart, Truck } from 'lucide-react';
 
-const AppNavbar = () => {
+const AppNavbar = ({ isLogin }) => {
     return (
         <div>
             <div className="navbar bg-base-300 items-center">
@@ -30,15 +30,15 @@ const AppNavbar = () => {
                                     <House className='w-6 h-6' />
                                     Home
                                 </Link></li>
-                                <li><Link href='/cart'>
+                                <li><Link href={`${isLogin ? ('/user/cart') : ('/user/login')}`}>
                                     <ShoppingCart className='w-6 h-6' />
                                     Cart
                                 </Link></li>
-                                <li><Link href='/wish'>
+                                <li><Link href={`${isLogin ? ('/user/wish') : ('/user/login')}`}>
                                     <Heart className='w-6 h-6' />
                                     Wish
                                 </Link></li>
-                                <li><Link href='/order'>
+                                <li><Link href={`${isLogin ? ('/user/order') : ('/user/login')}`}>
                                     <Truck className='w-6 h-6' />
                                     Order
                                 </Link></li>
@@ -54,15 +54,15 @@ const AppNavbar = () => {
                                 <House className='w-6 h-6' />
                                 Home
                             </Link></li>
-                            <li><Link href='/cart'>
+                            <li><Link href={`${isLogin ? ('/user/cart') : ('/user/login')}`}>
                                 <ShoppingCart className='w-6 h-6' />
                                 Cart
                             </Link></li>
-                            <li><Link href='/wish'>
+                            <li><Link href={`${isLogin ? ('/user/wish') : ('/user/login')}`}>
                                 <Heart className='w-6 h-6' />
                                 Wish
                             </Link></li>
-                            <li><Link href='/order'>
+                            <li><Link href={`${isLogin ? ('/user/order') : ('/user/login')}`}>
                                 <Truck className='w-6 h-6' />
                                 Order
                             </Link></li>
@@ -80,7 +80,20 @@ const AppNavbar = () => {
                         </div>
                     </div>
                     <a className="btn btn-md btn-accent">Profile</a>
-                    <a className="btn btn-md btn-accent btn-outline">Logout</a>
+
+                    {
+                        isLogin ? (
+                            <Link href='/api/user/logout' className="btn btn-md btn-accent btn-outline">
+                                Logout
+                            </Link>
+                        ) : (
+                            <Link href='/user/login' className="btn btn-md btn-accent btn-outline">
+                                Login
+                            </Link>
+                        )
+                    }
+
+
                 </div>
             </div>
         </div>

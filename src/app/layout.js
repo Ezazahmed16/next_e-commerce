@@ -1,6 +1,7 @@
 import { Raleway } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
+import { Toaster } from "react-hot-toast";
 
 const inter = Raleway({
   subsets: ["latin"],
@@ -16,6 +17,10 @@ export default function RootLayout({ children }) {
   return (
     <html data-theme="light" lang="en">
       <body className={inter.className}>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
         {children}
         <NextTopLoader
           color="#2299DD"
