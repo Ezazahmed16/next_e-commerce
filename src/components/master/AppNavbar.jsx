@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import { Heart, House, Search, ShoppingCart, Truck } from 'lucide-react';
+import { Heart, House, Search, ShoppingCart, Truck, User } from 'lucide-react';
 
 const AppNavbar = ({ isLogin }) => {
     return (
@@ -79,7 +79,17 @@ const AppNavbar = ({ isLogin }) => {
                             </button>
                         </div>
                     </div>
-                    <a className="btn btn-md btn-accent">Profile</a>
+
+                    {
+                        isLogin ? (
+                            <Link href='/user/profile' className="btn btn-md btn-accent">
+                                <User className='h-6 w-6' />
+                            </Link>
+
+                        ) : (
+                            <></>
+                        )
+                    }
 
                     {
                         isLogin ? (
