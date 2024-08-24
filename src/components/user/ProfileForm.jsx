@@ -1,8 +1,12 @@
-import React from 'react'
 
-const ProfileForm = () => {
+
+const ProfileForm = (props) => {
+
+
   return (
-    <div>ProfileForm</div>
+    <div>
+
+    </div>
   )
 }
 

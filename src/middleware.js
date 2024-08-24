@@ -6,11 +6,6 @@ export async function middleware(req) {
         // Get the token from cookies
         const tokenCookie = req.cookies.get('token');
         
-        // Ensure the token is in the expected format
-        if (!tokenCookie || typeof tokenCookie.value !== 'string') {
-            throw new Error('Token not found or invalid token format');
-        }
-
         // Verify the token
         const payload = await VerifyToken(tokenCookie.value);
 
@@ -30,7 +25,7 @@ export async function middleware(req) {
         if (req.url.startsWith('/api/')) {
             return NextResponse.json({ status: 'fail', data: 'unauthorized' }, { status: 401 });
         } else {
-            return NextResponse.redirect(new URL('/user/login', req.url));
+            return NextResponse.redirect(new URL('/user/login', req.url), 303);
         }
     }
 }
